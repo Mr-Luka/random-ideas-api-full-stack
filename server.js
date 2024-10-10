@@ -35,7 +35,21 @@ const app = express();
 // Every rout have a request and response object
 // in package.json, in scripts, replace with test to start and write: node server.js
 app.get('/', (req, res )=> {
-    res.send('Hello World');
-})
+    res.send({message: 'Welcome to the RandomIdeas API'});
+});
+// Get all ideas
+app.get('/api/ideas', (req, res )=> {
+    res.send({ success: true, data: ideas});
+});
+
+app.get('/api/ideas/:id', (req, res )=> {
+    const idea = ideas.find((idea)=> idea.id === +req.params.id); // becasue id is a number we put +
+
+    if(!idea) {
+        res.status(404).json({ success: false, error: 'Resource not found'});
+    }
+
+    res.send({ success: true, data: idea});
+});
 
 app.listen(port, ()=> { console.log(`Server listening on port ${port}`)});
