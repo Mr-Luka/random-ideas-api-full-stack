@@ -41,4 +41,9 @@ router.get('/:id', (req, res )=> {
     res.send({ success: false, data: idea});
 });
 
+// Add an idea
+router.post('/', (req, res)=>{
+    res.send(req.body.text);
+})
+
 module.exports = router;

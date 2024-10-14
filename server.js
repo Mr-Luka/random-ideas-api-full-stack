@@ -1,11 +1,15 @@
 const express = require('express');
-const port = 5000;
+const port = 5001;
 
 
 // We initialize a variable, usually called app, and we set that to express.
 // So now this app/ variable will be an object that has all kinds of methods on it for creating
 // routs and just creating our server itself.
 const app = express();
+
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 
 // creating a simple route .get() then we pass in a callback, which will always have request and
 // response parameters object
