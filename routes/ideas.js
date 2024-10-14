@@ -43,7 +43,16 @@ router.get('/:id', (req, res )=> {
 
 // Add an idea
 router.post('/', (req, res)=>{
-    res.send(req.body.text);
+    const idea = {
+        id: ideas.length + 1, // takes care of the id, so if u add another idea, ur idea will be 4 then 5 ...
+        text: req.body.text,
+        tag: req.body.tag,
+        username: req.body.username,
+        date: new Date().toISOString().slice(0, 10),
+    }
+
+    ideas.push(idea);
+    res.json({success: true, data: idea});
 })
 
 module.exports = router;
