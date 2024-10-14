@@ -1,5 +1,9 @@
 const express = require('express');
-const port = 5001;
+require('dotenv').config();
+const port = process.env.PORT || 5000;
+const connectDB = require('./config/db');
+
+connectDB();
 
 
 // We initialize a variable, usually called app, and we set that to express.
