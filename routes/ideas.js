@@ -69,4 +69,18 @@ router.put('/:id', (req, res )=> {
     res.send({ success: true, data: idea});
 });
 
+// Delete idea
+router.delete('/:id', (req, res )=> {
+    const idea = ideas.find((idea)=> idea.id === +req.params.id); // becasue id is a number we put +
+
+    if(!idea) {
+        res.status(404).json({ success: false, error: 'Resource not found'});
+    }
+
+    const index = ideas.indexOf(idea); // getting the index
+    ideas.splice(index, 1); // removing the idea
+
+    res.send({ success: true, data: {}});
+});
+
 module.exports = router;
