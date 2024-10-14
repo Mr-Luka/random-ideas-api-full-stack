@@ -1,0 +1,25 @@
+MongoDB
+
+Database is technically an organized collection of data, but a lot of times we use the term 
+database when talking about database management systems or dbms, and an example of a database
+management system is MongoDB or MySQL or Postagres SQL.
+They work in different ways, but the goals are the same, and that's to store and manage you data
+
+MongoDB
+A NoSQL / Document database
+Typically faster and more scalable then traditional databases
+very popular in JavaScript wordl(MERN, MEAN, MEVN)
+
+Data is stored in Documents:
+{
+    "_id": '393fg4-34gg5-455hf4-45g4f",
+    "name": 'John Doe",
+    "email": "johndoe@gmail.com",
+    "password": "SOME_HASHED_PW"
+}
+
+Tools that Iam gonna use:
+
+- MongoDB Atlas - Cloud implementation of MongoDB
+- MongoDB compass - Desktop tool to manage your databases
+- Mongoose - Node.js package for working with MongoDB
