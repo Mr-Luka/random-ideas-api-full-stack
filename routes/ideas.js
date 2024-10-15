@@ -38,14 +38,14 @@ router.get('/', async (req, res )=> {
 });
 
 // Get single idea
-router.get('/:id', (req, res )=> {
-    const idea = ideas.find((idea)=> idea.id === +req.params.id); // becasue id is a number we put +
-
-    if(!idea) {
-        res.status(404).json({ success: false, error: 'Resource not found'});
+router.get('/:id', async (req, res )=> {
+    try {
+        const idea = await Idea.findById(req.params.id);
+        res.send({ success: true, data: idea});
+    } catch(error) {
+        console.log(error)
+        res.status(500).json({ success: false, error: 'Something went wrong'})
     }
-
-    res.send({ success: false, data: idea});
 });
 
 // Add an idea
