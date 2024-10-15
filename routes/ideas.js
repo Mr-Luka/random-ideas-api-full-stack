@@ -67,17 +67,23 @@ router.post('/', async (req, res)=>{
 });
 
 // Update idea
-router.put('/:id', (req, res )=> {
-    const idea = ideas.find((idea)=> idea.id === +req.params.id); // becasue id is a number we put +
-
-    if(!idea) {
-        res.status(404).json({ success: false, error: 'Resource not found'});
+router.put('/:id', async (req, res )=> {
+    try {
+        const updatedIdea = await Idea.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: {
+                    text: req.body.text,
+                    tag: req.body.tag,
+                }
+            },
+            {new: true}
+        );
+        res.json({success: true, data: updatedIdea});
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ success: false, error: 'Something went wrong'})
     }
-
-    idea.text = req.body.text || idea.text;
-    idea.tag = req.body.tag || idea.tag
-
-    res.send({ success: true, data: idea});
 });
 
 // Delete idea
