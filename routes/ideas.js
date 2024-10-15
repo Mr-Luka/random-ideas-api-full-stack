@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Idea = require('../models/Idea');
 
 const ideas = [
     {
@@ -26,8 +27,13 @@ const ideas = [
 ]
 
 // Get all ideas
-router.get('/', (req, res )=> {
-    res.send({ success: true, data: ideas});
+router.get('/', async (req, res )=> {
+    try {
+        const ideas = await Idea.find();
+        res.send({ success: true, data: ideas});
+    } catch(error){
+        res.status(500).json({ success: false, error: 'Something went wrong'})
+    }
 });
 
 // Get single idea
