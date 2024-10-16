@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -10,6 +11,9 @@ connectDB();
 // So now this app/ variable will be an object that has all kinds of methods on it for creating
 // routs and just creating our server itself.
 const app = express();
+
+// Static Folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Body parser middleware
 app.use(express.json());
