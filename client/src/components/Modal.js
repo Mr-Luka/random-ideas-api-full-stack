@@ -28,7 +28,7 @@ To open() this now pertains to the class rather than the element
     }
     outsideClick(e) {
     if(e.target === this._modal) {
-        close();
+        this.close();
     }
     }
 }
