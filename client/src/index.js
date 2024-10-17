@@ -9,4 +9,3 @@ const ideaForm = new IdeaForm();
 ideaForm.render();
 //I have to call on ideaForm.render() to render the modal intake form function
 const ideaList = new IdeaList();
-ideaList.render()

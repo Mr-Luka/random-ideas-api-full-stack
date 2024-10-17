@@ -22,6 +22,7 @@ class IdeaList {
         try{
             const res = await IdeasApi.getIdeas();
             this._ideas = res.data.data;
+            this.render()
             console.log(this._udeas)
         } catch(error) {
             console.log(error)
