@@ -10,7 +10,24 @@ class IdeaForm {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('SUBMIT')
+        
+        const idea = {
+            text: this._form.elements.text.value, // type="text" thats how I can capture all text from modal form
+            tag: this._form.elements.tag.value,
+            username: this._form.elements.username.value,
+        };
+        console.log(idea)
+
+        // Clear Fields
+        this._form.elements.text.value = '';
+        this._form.elements.tag.value = '';
+        this._form.elements.username.value = '';
+
+        document.dispatchEvent(new Event('closemodal'));
+// .dispatchEvent(new Event('closemodal)) pretty much I can name it whatever I want,
+// but it's good practice to use a standard event name like 'closemodal'.
+// I pretty much made an custom event, now when I go to Modal.js, I will listen
+// to that event
     }
 
     render() {
