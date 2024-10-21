@@ -1,3 +1,5 @@
+import IdeasApi from './services/ideasApi';
+
 class IdeaForm {
     constructor ( ) {
         this._formModal = document.querySelector('#form-modal');
@@ -8,7 +10,7 @@ class IdeaForm {
         this._form.addEventListener('submit', this.handleSubmit.bind(this))
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         
         const idea = {
@@ -16,7 +18,8 @@ class IdeaForm {
             tag: this._form.elements.tag.value,
             username: this._form.elements.username.value,
         };
-        console.log(idea)
+        
+        const newIdea = await IdeasApi.createIdea(idea);
 
         // Clear Fields
         this._form.elements.text.value = '';
